@@ -1,25 +1,42 @@
-import { z } from 'zod';
-
-export enum VibeType {
-  Professional = 'professional',
-  Casual = 'casual',
-  Aggressive = 'aggressive',
-  Helpful = 'helpful',
-  Sarcastic = 'sarcastic',
-  Enthusiastic = 'enthusiastic',
-  Neutral = 'neutral'
+export interface MCPServer {
+  name: string;
+  command: string;
+  args: string[];
+  env?: Record<string, string>;
+  capabilities: string[]; // ['docs', 'memory', 'github', 'search']
+  installed: boolean;
 }
 
-export const VibeSchema = z.nativeEnum(VibeType);
-
-export interface VibeScore {
-  type: VibeType;
-  confidence: number; // 0.0 to 1.0
-  reasoning: string;
+export interface ProjectContext {
+  rootPath: string;
+  stack: {
+    frameworks: string[];
+    languages: string[];
+    packageManager: string;
+  };
+  gitRepo?: {
+    owner: string;
+    repo: string;
+    branch: string;
+  };
 }
 
-export interface AnalysisResult {
-  primaryVibe: VibeType;
-  scores: VibeScore[];
-  summary: string;
+export interface OrchestratorRequest {
+  type: 'query' | 'implement' | 'debug' | 'explain';
+  query: string;
+  context?: ProjectContext;
+  files?: string[];
+}
+
+export interface MCPResponse {
+  source: string;
+  data: any;
+  confidence: number;
+  timestamp: number;
+}
+
+export interface CombinedResponse {
+  answer: string;
+  sources: MCPResponse[];
+  suggestions: string[];
 }
