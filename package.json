@@ -5,25 +5,50 @@
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "vibemaster-mcp": "./dist/index.js"
+    "vibemaster-mcp": "dist/index.js"
   },
+  "files": [
+    "dist",
+    "scripts",
+    "README.md",
+    "LICENSE",
+    "API_KEYS_REFERENCE.md",
+    "QUICKSTART.md"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
     "test": "echo \"Tests coming soon\"",
     "postinstall": "node scripts/post-install.js",
-    "setup": "node scripts/setup.js"
+    "setup": "node scripts/setup.js",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "mcp",
     "ai",
     "coding",
     "orchestrator",
-    "vibe"
+    "vibe",
+    "model-context-protocol",
+    "claude",
+    "ai-assistant",
+    "automation",
+    "intelligent-routing"
   ],
   "author": "SnaiilyDevelopment",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SnaiilyDevelopment/VibemasterMCP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SnaiilyDevelopment/VibemasterMCP/issues"
+  },
+  "homepage": "https://github.com/SnaiilyDevelopment/VibemasterMCP#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.5.0",
     "axios": "^1.6.0",

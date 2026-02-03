@@ -1,0 +1,32 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+tsconfig.json
+
+# Development files
+.git/
+.github/
+.vscode/
+node_modules/
+
+# Documentation (included via files field)
+SETUP_GUIDE.md
+API_KEYS_GUIDE.md
+
+# Test and build files
+*.test.js
+*.spec.js
+coverage/
+
+# Environment and config
+.env
+.env.*
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build plan
+vibemaster-build-plan.md
