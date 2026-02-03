@@ -27,16 +27,7 @@ VibeMaster is a **meta-MCP** that:
 VibeMaster can automatically detect and install recommended MCPs for you!
 
 ```bash
-# Clone the repository
-git clone https://github.com/SnaiilyDevelopment/VibemasterMCP.git
-cd VibemasterMCP
-
-# Install dependencies and build
-npm install
-npm run build
-
-# Run the interactive setup (installs missing MCPs automatically)
-npm run setup
+npm install -g vibemaster-mcp
 ```
 
 The setup script will:
