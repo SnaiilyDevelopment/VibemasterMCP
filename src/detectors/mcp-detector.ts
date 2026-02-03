@@ -44,6 +44,27 @@ export class MCPDetector {
         args: ['-y', '@modelcontextprotocol/server-github'],
         capabilities: ['github', 'issues', 'repos'],
         installed: mcpServers.some(m => m.name.includes('github'))
+      },
+      {
+        name: 'filesystem',
+        command: 'npx',
+        args: ['-y', '@modelcontextprotocol/server-filesystem'],
+        capabilities: ['filesystem', 'files'],
+        installed: mcpServers.some(m => m.name.includes('filesystem'))
+      },
+      {
+        name: 'puppeteer',
+        command: 'npx',
+        args: ['-y', '@modelcontextprotocol/server-puppeteer'],
+        capabilities: ['web', 'scraping', 'browser'],
+        installed: mcpServers.some(m => m.name.includes('puppeteer'))
+      },
+      {
+        name: 'brave-search',
+        command: 'npx',
+        args: ['-y', '@modelcontextprotocol/server-brave-search'],
+        capabilities: ['search', 'web'],
+        installed: mcpServers.some(m => m.name.includes('brave') || m.name.includes('search'))
       }
     ];
 
@@ -88,6 +109,9 @@ export class MCPDetector {
     if (lower.includes('github')) caps.push('github', 'issues');
     if (lower.includes('search')) caps.push('search');
     if (lower.includes('qdrant') || lower.includes('vector')) caps.push('semantic', 'search');
+    if (lower.includes('filesystem') || lower.includes('file')) caps.push('filesystem', 'files');
+    if (lower.includes('puppeteer') || lower.includes('browser')) caps.push('web', 'scraping', 'browser');
+    if (lower.includes('brave')) caps.push('search', 'web');
     
     return caps;
   }
